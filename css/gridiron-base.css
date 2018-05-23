@@ -1,16 +1,35 @@
+/* BASE STYLES ------------------------------------------------- */
 
-/* core grid styling for wrapper */
+/* to-do: establish standard reset/base styles */
+html, body {
+  padding: 0; margin: 0;
+  font-family: Helvetica, Arial, 'sans serif';
+  font-size: 100%;
+}
+
+p, ul, ol, li {
+  margin: 0; padding: 0;
+  font-size: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  margin: 0; padding: 0;
+}
+
+
+/* CORE LAYOUT ------------------------------------------------- */
+
+/* define the main-wrapper layout */
 .main-wrapper{
   display: grid;
   width: 100%;
-  /* define the main-wrapper layout */
   grid-template-areas:
   'header header header header header header'
-  'main main main main main right'
+  'main main main main sidebar sidebar'
   'footer footer footer footer footer footer';
   grid-auto-rows: minmax(100px, auto);
   grid-gap: 10px;
-  padding: 10px;
 }
 
 /* basic styling for each layout section */
@@ -19,10 +38,35 @@
   padding: 10px;
 }
 
-/* define each main grid area */
+/* CONTENT AREAS ----------------------------------------------- */
 .header {
   grid-area: header;
    }
-.main { grid-area: main; }
-.sidebar { grid-area: right; }
-.footer { grid-area: footer; }
+.main-content { 
+  grid-area: main;
+  padding: 40px 40px;
+  background-color: #ffffff;
+ }
+.sidebar { 
+  grid-area: sidebar;
+ }
+.footer { 
+  grid-area: footer;
+ }
+
+ /* MEDIA QUERIES ----------------------------------------------- */
+
+ @media only screen and (max-width: 800px) {
+  .main-wrapper{
+    display: grid;
+    width: 100%;
+    grid-template-areas:
+    'header header header header header header'
+    'main main main main main main'
+    'sidebar sidebar sidebar sidebar sidebar sidebar'
+    'footer footer footer footer footer footer';
+    grid-auto-rows: minmax(100px, auto);
+    grid-gap: 10px;
+    padding: 10px; /* apply some outer padding when breaking */
+  }
+}
